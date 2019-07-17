@@ -15,8 +15,14 @@ class Persons extends Component{
 
   shouldComponentUpdate(nextProps,nextState){
     console.log('[Persons.js] componentShouldUpdate',nextProps);
-    return true;
-  }
+    if(nextProps.persons !== this.props.persons){
+      return true;
+    }
+    else{
+      return false;
+    }
+  } // if you put validation on each fields and methods of props 
+    //then use PureComponent instead of Component
 
   getSnapshotBeforeUpdate(prevProps,prevState){
     console.log('[Persons.js] getSnapshotBeforeUpdate');
@@ -26,6 +32,10 @@ class Persons extends Component{
   componentDidUpdate(prevProps,prevState,snapshot){
     console.log('[Persons.js] componentDidUpdate');
     console.log(snapshot);
+  }
+
+  componentWillUnmount(){
+    console.log("[Persons.js] componentWillUnmount")
   }
 
   render(){
